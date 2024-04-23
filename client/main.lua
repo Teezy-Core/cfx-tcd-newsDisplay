@@ -40,12 +40,16 @@ function ToggleBroadcast(title, msg, bottom, time)
 end
 
 function displayNews(title, msg, bottom, time)
-    TriggerServerEvent("TeeztCore:Server:Broadcast", title, msg, bottom, time)
+    TriggerServerEvent("cfx-tcd-newsDisplay:Server:Broadcast", title, msg, bottom, time)
 end
 
-RegisterNetEvent("TeeztCore:Client:Broadcast")
-AddEventHandler("TeeztCore:Client:Broadcast", function(title, msg, bottom, time)
+RegisterNetEvent("cfx-tcd-newsDisplay:Client:Broadcast")
+AddEventHandler("cfx-tcd-newsDisplay:Client:Broadcast", function(title, msg, bottom, time)
     ToggleBroadcast(title, msg, bottom, time)
 end)
 
 exports("displayNews", displayNews)
+
+RegisterCommand("news", function(source, args)
+    displayNews("Test Title", "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", "Test Bottom Message", 10)
+end, false)
