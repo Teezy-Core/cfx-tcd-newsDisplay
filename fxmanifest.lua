@@ -4,7 +4,7 @@ game 'gta5'
 name "cfx-tcd-newsDisplay"
 description "A Simple News Display Script"
 author "Teezy Core Development"
-version "1.0.0"
+version "1.1.0"
 
 shared_scripts {
 	'config.lua'

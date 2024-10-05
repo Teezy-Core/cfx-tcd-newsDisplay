@@ -1,4 +1,4 @@
-function ToggleBroadcast(title, msg, bottom, time)
+local function toggleBroadcast(title, msg, bottom, time)
     local scaleform = RequestScaleformMovie("breaking_news")
 
     while not HasScaleformMovieLoaded(scaleform) do
@@ -39,17 +39,17 @@ function ToggleBroadcast(title, msg, bottom, time)
     end)
 end
 
-function displayNews(title, msg, bottom, time)
+local function displayNews(title, msg, bottom, time)
     TriggerServerEvent("cfx-tcd-newsDisplay:Server:Broadcast", title, msg, bottom, time)
 end
 
 RegisterNetEvent("cfx-tcd-newsDisplay:Client:Broadcast")
 AddEventHandler("cfx-tcd-newsDisplay:Client:Broadcast", function(title, msg, bottom, time)
-    ToggleBroadcast(title, msg, bottom, time)
+    toggleBroadcast(title, msg, bottom, time)
 end)
 
 exports("displayNews", displayNews)
 
-RegisterCommand("news", function(source, args)
-    displayNews("Test Title", "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", "Test Bottom Message", 10)
-end, false)
+-- RegisterCommand("news", function(source, args)
+--     displayNews("Test Title", "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", "Test Bottom Message", 10)
+-- end, false)
